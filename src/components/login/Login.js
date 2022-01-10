@@ -1,17 +1,34 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { auth } from "../../config/firebaseServices";
 import "./login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const history = useHistory();
 
   const signIn = (e) => {
     console.log("signin");
     e.preventDefault();
-
-    // firebase login
+    signInWithEmailAndPassword(auth, email, pass)
+      .then((userCredential) => {
+        // Signed in
+        //const user = userCredential.user;
+        // if success redirect to home
+        if (userCredential) {
+          history.push("/");
+        }
+      })
+      .catch((error) => {
+        //const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   };
 
   const register = (e) => {
@@ -20,16 +37,16 @@ const Login = () => {
     createUserWithEmailAndPassword(auth, email, pass)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        console.log(user);
-
-        // ...
+        //const user = userCredential.user;
+        // if success redirect to home
+        if (userCredential) {
+          history.push("/");
+        }
       })
       .catch((error) => {
-        const errorCode = error.code;
+        //const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
-        // ..
       });
   };
   return (
