@@ -1,3 +1,4 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../../config/firebaseServices";
@@ -16,14 +17,20 @@ const Login = () => {
   const register = (e) => {
     console.log("register");
     e.preventDefault();
-    auth
-      .createUserWithEmailAndPassword(email, pass)
-      .then((auth) => {
-        // success
-        console.log(auth);
+    createUserWithEmailAndPassword(auth, email, pass)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+
+        // ...
       })
-      .catch((err) => alert(err.message));
-    //firebase register
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        // ..
+      });
   };
   return (
     <div className="login">
