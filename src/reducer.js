@@ -1,4 +1,4 @@
-import { ADD_TO_BASKET } from "./consts";
+import { ADD_TO_BASKET, REMOVE_FROM_BASKET } from "./consts";
 
 export const initialState = {
   basket: [],
@@ -15,6 +15,21 @@ const reducer = (state, action) => {
       return {
         ...state,
         basket: [...state.basket, action.item],
+      };
+    case REMOVE_FROM_BASKET:
+      // find first index of product to delete
+
+      const index = state.basket.findIndex((item) => item.id === action.id);
+      let newBasket = [...state.basket];
+      if (index >= 0) {
+        // found prod
+        newBasket.splice(index, 1);
+      } else {
+        console.warn("product unavailable in the basket");
+      }
+      return {
+        ...state,
+        basket: newBasket,
       };
     default:
       return state;
