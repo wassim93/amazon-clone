@@ -1,7 +1,8 @@
-import { ADD_TO_BASKET, REMOVE_FROM_BASKET } from "./consts";
+import { ADD_TO_BASKET, REMOVE_FROM_BASKET, SET_USER } from "./consts";
 
 export const initialState = {
   basket: [],
+  user: null,
 };
 
 //Selector
@@ -18,7 +19,6 @@ const reducer = (state, action) => {
       };
     case REMOVE_FROM_BASKET:
       // find first index of product to delete
-
       const index = state.basket.findIndex((item) => item.id === action.id);
       let newBasket = [...state.basket];
       if (index >= 0) {
@@ -30,6 +30,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         basket: newBasket,
+      };
+    case SET_USER:
+      return {
+        ...state,
+        user: action.user,
       };
     default:
       return state;
