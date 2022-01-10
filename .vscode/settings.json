@@ -1,9 +1,0 @@
-{
-    "workbench.colorTheme": "Default Dark+",
-    "editor.formatOnSave": true,
-    "emmet.includeLanguages": {
-        "javascript":"javascriptreact"
-    },
-    "files.autoSaveDelay": 500,
-    "files.autoSave": "afterDelay"
-}
