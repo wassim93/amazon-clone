@@ -6,7 +6,6 @@
 .pnp.js
 
 /.vscode
-src/config/firebase.js
 
 # testing
 /coverage
