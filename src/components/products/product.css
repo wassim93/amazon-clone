@@ -20,8 +20,6 @@
   flex-direction: column;
   flex: 1;
 }
-.product__description {
-}
 
 .product__price {
   margin-top: 5px;
