@@ -8,9 +8,8 @@ import { useStateValue } from "../../provider/StateProvider";
 import { auth } from "../../config/firebaseServices";
 const Header = () => {
   const [{ basket, user }, dispatch] = useStateValue();
-  const handleAuthentication = (e) => {
+  const handleAuthentication = () => {
     console.log(user);
-    e.preventDefault();
     if (user) {
       auth.signOut();
     }
@@ -29,7 +28,7 @@ const Header = () => {
         <Link to={!user ? "/login" : "/"}>
           <div onClick={handleAuthentication} className="header__option">
             <span className="header__optionLine1">
-              Hello {!user ? "Guest" : user.email}
+              Hello{!user ? "Guest" : user.email}
             </span>
             <span className="header__optionLine2">
               {user ? "Sign out" : "Sign in"}

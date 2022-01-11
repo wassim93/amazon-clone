@@ -3,6 +3,9 @@
 - material ui
 - react router
 - context api
+- hooks
+- firebase
+- react flip move animation
 
 # Getting Started with Create React App
 

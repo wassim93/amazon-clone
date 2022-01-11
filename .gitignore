@@ -7,6 +7,9 @@
 
 /.vscode
 src/config/firebase.js
+.firebase
+.firebaserc
+firebase.json
 
 # testing
 /coverage
