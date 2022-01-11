@@ -4,10 +4,15 @@
 - react router
 - context api
 - hooks
-- firebase
+- firebase auth & could functions
 - react flip move animation
 - stripe functionality for online payment
 - Sign in & Sign Up with firebase
+
+In order to run this project
+
+- you should first copy your own config script from your firebase project and paste it in firebase.js file under /config folder
+- as a second step you shoudl setup your stripe secret key realted to your stripe account and replace it in index.js file under /functions folder
 
 # Getting Started with Create React App
 
