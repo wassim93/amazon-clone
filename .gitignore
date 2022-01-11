@@ -10,6 +10,7 @@ src/config/firebase.js
 .firebase
 .firebaserc
 firebase.json
+firebase-debug.log
 
 # testing
 /coverage
