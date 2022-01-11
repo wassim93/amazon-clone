@@ -5,6 +5,7 @@ import Checkout from "./components/checkout/Checkout";
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import Login from "./components/login/Login";
+import Payment from "./components/payment/Payment";
 import { auth } from "./config/firebaseServices";
 import { SET_USER } from "./consts";
 import { useStateValue } from "./provider/StateProvider";
@@ -41,6 +42,10 @@ const App = () => {
           <Route path="/checkout">
             <Header />
             <Checkout />
+          </Route>
+          <Route path="/payment">
+            <Header />
+            <Payment />
           </Route>
           <Route path="/">
             <Header />

@@ -6,6 +6,8 @@
 - hooks
 - firebase
 - react flip move animation
+- stripe functionality for online payment
+- Sign in & Sign Up with firebase
 
 # Getting Started with Create React App
 
