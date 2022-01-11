@@ -16,7 +16,7 @@
 
 # project Live demo without payment feature
 
-https://clone-bcd7f.web.app/
+https://clone-bcd7f.firebaseapp.com/
 
 # project Screenshots
 
