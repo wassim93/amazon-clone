@@ -14,6 +14,24 @@
 - as a second step you shoudl setup your stripe secret key realted to your stripe account and replace it in index.js file under /functions folder
 - you need blaze subscription plan for firebase to run cloud functions
 
+# project Live demo without payment feature
+
+https://clone-bcd7f.web.app/
+
+# project Screenshots
+
+Home Page
+<img src="https://github.com/wassim93/amazon-clone/blob/master/src/Screenshots/home.PNG" width=50% height=50%>
+
+Basket Page
+<img src="https://github.com/wassim93/amazon-clone/blob/master/src/Screenshots/basket%20items.PNG" width=50% height=50%>
+
+checkout Page
+<img src="https://github.com/wassim93/amazon-clone/blob/master/src/Screenshots/checkout%20items.PNG" width=50% height=50%>
+
+Authentication Page
+<img src="https://github.com/wassim93/amazon-clone/blob/master/src/Screenshots/authentication.PNG" width=50% height=50%>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
