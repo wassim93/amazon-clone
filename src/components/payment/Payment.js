@@ -1,6 +1,8 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import React, { useState } from "react";
+import axios from "../Network/axios";
+import React, { useState, useEffect } from "react";
 import CurrencyFormat from "react-currency-format";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../../provider/StateProvider";
 import { getBasketTotal } from "../../reducer";
@@ -11,6 +13,7 @@ const Payment = () => {
   const [{ basket, user }, dispatch] = useStateValue();
   const stripe = useStripe();
   const elements = useElements();
+  const history = useHistory();
 
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState("");
@@ -22,7 +25,12 @@ const Payment = () => {
   useEffect(() => {
     // generate special stripe secret which allows us to charge a customer
     const getClientSecret = async () => {
-      const response = await axios;
+      const response = await axios({
+        method: "post",
+        // stripe expects the total in currencies subunits
+        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
+      });
+      setClientSecret(response.data.clientSecret);
     };
     getClientSecret();
   }, [basket]);
@@ -33,7 +41,19 @@ const Payment = () => {
     // prevent you from hitting buy button many time just once an then button will be dsabled
     setProcessing(true);
 
-    const payload = await stripe;
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      })
+      .then(({ paymentIntent }) => {
+        // payment itent = payment confrmation
+        setSucceeded(true);
+        setError(null);
+        setProcessing(false);
+        history.replace("/orders");
+      });
   };
   const handleChange = (e) => {
     // listen to change in card and display error in cass of
@@ -87,7 +107,6 @@ const Payment = () => {
                   <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
                 </button>
               </div>
-              // error
               {error && <div>{error}</div>}
             </form>
           </div>
